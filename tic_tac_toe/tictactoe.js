@@ -75,7 +75,7 @@ const TicTac = {
 
   highlightWinningCells(combo) {
     combo.forEach((index) => {
-      document.getElementById("board").children[index].style.color = "red";
+      document.getElementById("board").children[index].style.color = "green";
     });
   },
 
@@ -85,6 +85,7 @@ const TicTac = {
     this.currentPlayer = "X";
     this.gameOver = false;
     this.createboard();
+    this.updateMessage("Player X's turn");
   },
 
   updateMessage(message) {

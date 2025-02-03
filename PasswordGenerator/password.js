@@ -1,6 +1,7 @@
 let passwordBox = document.getElementById("passwordBox");
 let newPassword = document.getElementById("newPassword");
-let passwordLengthSlider = document.getElementById("passwordLength");
+let passwordLengthSlider = document.getElementById("lengthSlider");
+let passwordLengthText = document.getElementById("lengthText")
 
 function generatePassword(length) {
   const charecters =
@@ -16,11 +17,12 @@ function generatePassword(length) {
 
 function displayNewPassword() {
   passwordBox.innerHTML = generatePassword(passwordLengthSlider.value);
+  passwordLengthText.innerHTML = "Password Length: " + passwordLengthSlider.value;
 }
 
 function copyPassword() {
   navigator.clipboard.writeText(passwordBox.innerHTML);
-  alert(passwordBox.innerHTML + " copied!");
+  alert("Password copied!");
 }
 
 function init() {

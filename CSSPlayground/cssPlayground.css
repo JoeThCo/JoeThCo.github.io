@@ -1,0 +1,39 @@
+.icon-bar {
+    width: 100%;
+    background-color: #555;
+    overflow: auto;
+}
+
+.icon-bar a {
+    float: left;
+    text-align: center;
+    width: 20%;
+    padding: 12px 0;
+    transform: all 0.25s ease;
+    color: white;
+    font-size: 36px;
+}
+
+.icon-bar a:hover {
+    background-color: #000;
+}
+
+.active {
+    background-color: #04AA6D;
+}
+
+#Hamburger {
+    width: 35px;
+    /* Make it wide */
+    height: 5px;
+    /* Add a height */
+    background-color: black;
+    /* Black*/
+    margin: 6px 0;
+    /*
+    1 value applies to all sides
+    2 values, first to top and bottom, second to left and right
+    3 values first top, second left and right, third bottom
+    4 values top, right, bottom then left
+    */
+}

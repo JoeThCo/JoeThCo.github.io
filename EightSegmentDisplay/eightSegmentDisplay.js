@@ -39,9 +39,9 @@ function addEightSegment() {
 
 let count = 0;
 function plusOne() {
-  setNumber(getWrappedNumber());
-  document.getElementById("click").innerHTML = count;
   count += 1;
+  setNumber(getWrappedNumber());
+  document.getElementById("click").innerHTML = count % Object.keys(integer_dictionary).length;
 }
 
 function getWrappedNumber() {

@@ -1,3 +1,7 @@
-* binary
-*.js text eol=lf
+# Ensure files used in integrity checks are handled as binary
+*.js binary
 *.dll binary
+*.wasm binary
+*.blat binary
+*.dat binary
+*.json binary

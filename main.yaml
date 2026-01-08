@@ -1,0 +1,37 @@
+name: Deploy to GitHub Pages
+
+on:
+  push:
+    branches: [ main ] # Change this to your default branch name
+
+jobs:
+  deploy-to-github-pages:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: '8.0.x' # Ensure this matches your project version
+
+      - name: Publish API
+        run: dotnet publish -c Release -o release
+
+      # This step fixes the "invalid href" error by setting the correct base path
+      - name: Change base-tag in index.html from / to repo-name
+        run: sed -i 's/<base href="\/" \/>/<base href="\/JoeThCo.github.io\/" \/>/g' release/wwwroot/index.html
+
+      # This step fixes the 404 error on page refresh
+      - name: Copy index.html to 404.html
+        run: cp release/wwwroot/index.html release/wwwroot/404.html
+
+      # Add a .nojekyll file to ensure GitHub doesn't ignore the _framework folder
+      - name: Add .nojekyll file
+        run: touch release/wwwroot/.nojekyll
+
+      - name: Commit & Push to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          folder: release/wwwroot
+          branch: gh-pages # The branch the action will deploy to
